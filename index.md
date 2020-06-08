@@ -2,11 +2,11 @@
 Ingénieur @ BNP Paribas
 
 ## Intérêts
--Business
+- Business
 : Stratégie, entrepreneuriat, conception de produit, finance de marché, marketing, business engineering
--Ingénieurie
+- Ingénieurie
 : Conception de produit, Gammes de fabrication, innovation, informatique, web, systèmes, aéronautique, aérospatial
--Perso
+- Perso
 : Moto, vélo de rando et de ville, aquariums, claviers mécaniques, musique & guitare, café, bateau, kitesurf & powerkite, habits masculins & chaussures, nutrition, santé, sport & renforcement musculaire, ski de randonnée et la liste est encore longue...
 
 ## Side Projects

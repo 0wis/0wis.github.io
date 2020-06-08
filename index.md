@@ -4,10 +4,10 @@ Ingénieur @ BNP Paribas
 ## Intérêts
 - Business
 : Stratégie, entrepreneuriat, conception de produit, finance de marché, marketing, business engineering
-- Ingénieurie
-: Conception de produit, Gammes de fabrication, innovation, informatique, web, systèmes, aéronautique, aérospatial
+- Ingénierie
+: Conception de produit, Gammes de fabrication, procédés de fabrication, innovation, informatique, web, systèmes, aéronautique, aérospatial
 - Perso
-: Moto, vélo de rando et de ville, aquariums, claviers mécaniques, musique & guitare, café, bateau, kitesurf & powerkite, habits masculins & chaussures, nutrition, santé, sport & renforcement musculaire, ski de randonnée et la liste est encore longue...
+: Moto, vélo de rando et de ville, aquariums, claviers mécaniques, musique & guitare, café, bateau, kitesurf & powerkite, habits masculins & chaussures, nutrition, santé, sport & renforcement musculaire, ski de randonnée... etc (la liste est encore longue)
 
 ## Side Projects
 - **[Ce site](https://lionellebon.com)**

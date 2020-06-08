@@ -17,6 +17,6 @@ Ingénieur @ BNP Paribas
 - **[S•Multiplug](https://www.kisskissbankbank.com/fr/projects/s-multiplug-la-multiprise-intelligente-avec-arts-et-metiers-a-metz)**
 : Une multiprise intelligente pour suivre sa consommation d'électricité et automatiser sa répartition entre les différents appareils branchés
 - **[Shakerbot](https://mailchi.mp/798633be4238/shakerbot?fbclid=IwAR3d6aZWzmwPbonkywdQyFzgahC0esA4oUYLi6FeOLeR2nqpxfIzjXsBq7s)**
-: Un projet de Startup weekend pour distribuer un robot de distribution de cocktails
+: Un projet sorti d'un startup weekend pour distribuer un robot de distribution de cocktails
 
 

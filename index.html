@@ -187,7 +187,7 @@
     /* ── ABOUT ── */
     #about { background: var(--ink); color: var(--paper); }
     #about .section-title { color: var(--paper); }
-    #about .section-number { color: var(--accent); }
+    #about .section-number { color: #7fc7a6; }
     #about .section-header { border-color: #3a3530; }
     .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
     .about-text p {
@@ -208,7 +208,8 @@
       font-size: 0.65rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #7fc7a6;
+      font-weight: 500;
       margin-bottom: 0.5rem;
     }
     .sidebar-value {
@@ -421,7 +422,7 @@
 
     /* ── CONTACT ── */
     #contact { background: var(--paper); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; }
     .contact-headline {
       font-family: var(--font-display);
       font-size: clamp(2rem, 4vw, 3rem);
@@ -487,11 +488,10 @@
       background: var(--ink);
       color: #7a7060;
       padding: 2rem 4rem;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: center;
       border-top: 1px solid #3a3530;
     }
     .footer-left { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; }
-    .footer-right { font-family: var(--font-display); font-style: italic; font-size: 0.9rem; }
 
     /* ── HORIZONTAL RULE DIVIDER ── */
     .divider {
@@ -711,7 +711,7 @@
       </div>
       <div class="projects-list fade-up">
 
-        <a class="project-item" href="livrables/guide_creation_graphiques_tableau_software.pdf" target="_blank" rel="noopener noreferrer" title="Ouvrir le guide Tableau (PDF)">
+        <a class="project-item" href="https://www.kaggle.com" target="_blank" rel="noopener noreferrer" title="Ouvrir Kaggle">
           <div class="project-num">01</div>
           <div class="project-info">
             <div class="project-title">Veille technologique Data</div>
@@ -738,23 +738,23 @@
           <span class="project-badge">Formalisation</span>
         </a>
 
-        <div class="project-item">
+        <a class="project-item" href="https://public.tableau.com/app/profile/lionel.lebon/viz/Gantt_17773662605400/GanttProjetPortfolio" target="_blank" rel="noopener noreferrer" title="Ouvrir le plan de projet sur Tableau Public">
           <div class="project-num">04</div>
           <div class="project-info">
             <div class="project-title">Plan de projet &amp; outils de pilotage</div>
             <div class="project-desc">Organisation d'un projet data avec roadmap, jalons et outils collaboratifs.</div>
           </div>
           <span class="project-badge green">Projet</span>
-        </div>
+        </a>
 
-        <div class="project-item">
+        <a class="project-item" href="livrables/guide_creation_graphiques_tableau_software.pdf" target="_blank" rel="noopener noreferrer" title="Ouvrir la documentation (PDF)">
           <div class="project-num">05</div>
           <div class="project-info">
             <div class="project-title">Documentation &amp; procédures</div>
             <div class="project-desc">Formalisation des procédures de documentation pour assurer une gestion fiable et pérenne.</div>
           </div>
           <span class="project-badge">Documentation</span>
-        </div>
+        </a>
 
       </div>
     </div>
@@ -852,40 +852,22 @@
           <h3 class="contact-headline">Travaillons<br><em>ensemble.</em></h3>
           <p class="contact-subtext">Disponible pour échanger sur ce portfolio ou sur des opportunités en analyse data &amp; gestion de projet.</p>
           <div class="contact-links">
-            <a href="mailto:votre@email.com" class="contact-link">
+            <a href="mailto:roche_rotor_38@icloud.com" class="contact-link">
               <span class="contact-link-icon">✉</span>
-              <span>votre@email.com</span>
+              <span>roche_rotor_38@icloud.com</span>
               <span class="contact-link-label">Email</span>
             </a>
-            <a href="https://linkedin.com/in/votre-profil" target="_blank" class="contact-link">
+            <a href="https://www.linkedin.com/in/lebonlionel/" target="_blank" class="contact-link">
               <span class="contact-link-icon">in</span>
-              <span>linkedin.com/in/votre-profil</span>
+              <span>linkedin.com/in/lebonlionel</span>
               <span class="contact-link-label">LinkedIn</span>
             </a>
-            <a href="https://github.com/votre-profil" target="_blank" class="contact-link">
+            <a href="https://github.com/0wis" target="_blank" class="contact-link">
               <span class="contact-link-icon">⌥</span>
-              <span>github.com/votre-profil</span>
+              <span>github.com/0wis</span>
               <span class="contact-link-label">GitHub</span>
             </a>
           </div>
-        </div>
-        <div class="contact-form-area">
-          <div class="form-field">
-            <label class="form-label">Nom</label>
-            <input type="text" class="form-input" placeholder="Votre nom">
-          </div>
-          <div class="form-field">
-            <label class="form-label">Email</label>
-            <input type="email" class="form-input" placeholder="votre@email.com">
-          </div>
-          <div class="form-field">
-            <label class="form-label">Message</label>
-            <textarea class="form-input" placeholder="Votre message…"></textarea>
-          </div>
-          <button class="form-submit">Envoyer →</button>
-          <p style="font-size:0.75rem; color:var(--muted); margin-top:0.75rem;">
-            💡 Pour activer le formulaire, connectez-le à <a href="https://formspree.io" style="color:var(--accent)">Formspree</a> ou <a href="https://www.netlify.com/products/forms/" style="color:var(--accent)">Netlify Forms</a>.
-          </p>
         </div>
       </div>
     </div>
@@ -893,8 +875,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-left">© 2024 — [Prénom Nom] · Portfolio Réflexif · Chef de Projet Data</div>
-    <div class="footer-right">Data ESN — Aéroworld</div>
+    <div class="footer-left">2026 — Lionel LEBON · Portfolio · Chef de Projet Data</div>
   </footer>
 
   <script>

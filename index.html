@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Consultant Data</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1714;
+      --paper: #f5f0e8;
+      --cream: #ede7d4;
+      --accent: #1b4d3e;
+      --accent2: #2f6f5a;
+      --muted: #7a7060;
+      --rule: #c8bfa8;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 3rem;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      backdrop-filter: blur(4px);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 3rem 6rem 4rem;
+      border-right: 1px solid var(--rule);
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 900;
+      line-height: 0.95;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-name em {
+      display: block;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .hero-tagline {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 380px;
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--ink); color: var(--paper);
+      padding: 0.9rem 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      width: fit-content;
+    }
+    .hero-cta:hover { background: var(--accent); transform: translateY(-2px); }
+    .hero-right {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 3rem;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-decorative {
+      position: absolute; top: 3rem; right: 3rem;
+      font-family: var(--font-display);
+      font-size: 14rem;
+      font-weight: 900;
+      color: var(--rule);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      border: 1px solid var(--rule);
+      background: var(--rule);
+      position: relative; z-index: 1;
+    }
+    .stat {
+      background: var(--cream);
+      padding: 1.5rem;
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    section { padding: 6rem 0; }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+    .section-header {
+      display: flex; align-items: baseline; gap: 2rem;
+      margin-bottom: 4rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-number {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--ink); color: var(--paper); }
+    #about .section-title { color: var(--paper); }
+    #about .section-number { color: var(--accent); }
+    #about .section-header { border-color: #3a3530; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #c8bfa8;
+      margin-bottom: 1.5rem;
+      line-height: 1.85;
+    }
+    .about-text p strong { color: var(--paper); font-weight: 500; }
+    .sidebar-block {
+      border-top: 1px solid #3a3530;
+      padding: 1.5rem 0;
+    }
+    .sidebar-block:last-child { border-bottom: 1px solid #3a3530; }
+    .sidebar-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .sidebar-value {
+      font-size: 0.95rem;
+      color: #c8bfa8;
+      line-height: 1.6;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--paper); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .skill-card {
+      background: var(--paper);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+    }
+    .skill-card:hover { background: var(--cream); }
+    .skill-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .skill-card-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--rule);
+      color: var(--muted);
+    }
+    .tag.highlight { border-color: var(--accent); color: var(--accent); }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--cream); }
+    .projects-list { display: flex; flex-direction: column; gap: 2px; }
+    .project-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      background: var(--cream);
+      padding: 2rem;
+      border: 1px solid var(--rule);
+      border-bottom: none;
+      transition: background 0.2s, transform 0.2s;
+      text-decoration: none; color: inherit;
+      cursor: default;
+    }
+    .project-item:last-child { border-bottom: 1px solid var(--rule); }
+    .project-item:hover { background: var(--paper); transform: translateX(4px); }
+    .project-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--rule);
+      line-height: 1;
+    }
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .project-desc { font-size: 0.9rem; color: var(--muted); }
+    .project-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      background: var(--ink);
+      color: var(--paper);
+      white-space: nowrap;
+    }
+    .project-badge.green { background: var(--accent2); }
+    .project-badge.red { background: var(--accent); }
+
+    /* ── TABLEAU ── */
+    #tableau { background: var(--paper); }
+    .tableau-placeholder {
+      border: 2px dashed var(--rule);
+      padding: 5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .tableau-placeholder::before {
+      content: 'VISUALISATION';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: 8rem;
+      font-weight: 900;
+      color: var(--cream);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .tableau-inner { position: relative; z-index: 1; }
+    .tableau-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .tableau-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .tableau-desc { color: var(--muted); max-width: 500px; margin: 0 auto 1.5rem; }
+    .tableau-embed-note {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      border: 1px solid var(--accent);
+      display: inline-block;
+      padding: 0.4rem 1rem;
+    }
+    .tableauPlaceholder {
+      width: 100%;
+      max-width: 1000px;
+      margin: 1.5rem auto 0;
+    }
+    .tableauPlaceholder .tableauViz {
+      width: 100%;
+      min-height: 420px;
+    }
+
+    /* ── VIDEO ── */
+    #video { background: var(--ink); }
+    #video .section-title { color: var(--paper); }
+    #video .section-number { color: var(--accent); }
+    #video .section-header { border-color: #3a3530; }
+    .video-placeholder {
+      background: #111;
+      border: 1px solid #3a3530;
+      aspect-ratio: 16/9;
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .video-play {
+      width: 72px; height: 72px;
+      border: 2px solid var(--paper);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--paper);
+      font-size: 1.5rem;
+      padding-left: 4px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .video-play:hover { border-color: var(--accent); background: var(--accent); }
+    .video-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7a7060;
+    }
+    .video-caption {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #c8bfa8;
+    }
+    .video-embed-note {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      border: 1px solid #3a3530;
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+    }
+    .video-embed {
+      width: min(100%, 800px);
+      aspect-ratio: 16/9;
+      border: 1px solid #3a3530;
+      background: #000;
+    }
+    .video-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    .video-fallback-link {
+      margin-top: 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: #c8bfa8;
+    }
+    .video-fallback-link a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--paper); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .contact-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .contact-headline em { font-style: italic; color: var(--muted); }
+    .contact-subtext { color: var(--muted); margin-bottom: 2.5rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 1px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      text-decoration: none; color: var(--ink);
+      font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .contact-link:hover { background: var(--ink); color: var(--paper); transform: translateX(4px); }
+    .contact-link-icon { font-size: 1.1rem; }
+    .contact-link-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-left: auto; }
+    .contact-link:hover .contact-link-label { color: var(--rule); }
+    .form-field { margin-bottom: 1.5rem; }
+    .form-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .form-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 0.6rem 0;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { border-color: var(--ink); }
+    .form-input::placeholder { color: var(--rule); }
+    textarea.form-input { resize: vertical; min-height: 100px; border: 1px solid var(--rule); padding: 0.6rem; margin-top: 0.2rem; }
+    .form-submit {
+      background: var(--ink); color: var(--paper);
+      border: none; cursor: pointer;
+      padding: 0.9rem 2.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: #7a7060;
+      padding: 2rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid #3a3530;
+    }
+    .footer-left { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; }
+    .footer-right { font-family: var(--font-display); font-style: italic; font-size: 0.9rem; }
+
+    /* ── HORIZONTAL RULE DIVIDER ── */
+    .divider {
+      height: 1px; background: var(--rule);
+      max-width: 1200px; margin: 0 auto; padding: 0 4rem;
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 4rem 1.5rem; }
+      .section-inner { padding: 0 1.5rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .project-item { grid-template-columns: 60px 1fr; }
+      .project-badge { display: none; }
+      .tableau-placeholder { padding: 3rem 1.25rem; }
+      .tableau-placeholder::before { font-size: 4rem; }
+      .tableauPlaceholder .tableauViz { min-height: 320px; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+    }
+    @media (max-width: 580px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Portfolio — Consultant Data</a>
+    <ul class="nav-links">
+      <li><a href="#about">Profil</a></li>
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#tableau">Visualisation</a></li>
+      <li><a href="#video">Vidéo</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left fade-up">
+      <p class="hero-eyebrow">Portfolio · 2026</p>
+      <h1 class="hero-name">
+        Lionel<br>
+        <em>Lebon</em>
+      </h1>
+      <p class="hero-tagline">
+        Consultant Data &amp; Chef de projet en analyse data — je transforme des données complexes en décisions stratégiques.
+      </p>
+      <a href="#projects" class="hero-cta">
+        <span>Voir les livrables</span>
+        <span>→</span>
+      </a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-decorative">LL</div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Compétences démontrées</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4+</div>
+          <div class="stat-label">Livrables produits</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">Data</div>
+          <div class="stat-label">Domaine d'expertise</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">Fr/En</div>
+          <div class="stat-label">Langues de travail</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Qui suis-je ?</h2>
+      </div>
+      <div class="about-grid fade-up">
+        <div class="about-text">
+          <p>
+            Passionné par la donnée et son potentiel stratégique, je me positionne comme un(e) <strong>consultant(e) Data</strong> capable de faire le pont entre les enjeux métier et les solutions techniques.
+          </p>
+          <p>
+            Mon approche repose sur une capacité à <strong>challenger les besoins exprimés</strong>, à structurer des démarches projet rigoureuses et à vulgariser des concepts complexes pour des interlocuteurs variés.
+          </p>
+          <p>
+            Ce portfolio illustre concrètement ma maîtrise des compétences attendues pour le poste de <strong>Chef de projet en analyse data</strong>.
+          </p>
+        </div>
+        <div class="about-sidebar">
+          <div class="sidebar-block">
+            <div class="sidebar-label">Formation</div>
+            <div class="sidebar-value">Ingénieur Grande École des Arts et Métiers</div>
+            <div class="sidebar-value">IAE Aix - Master in Management</div>
+            <div class="sidebar-value">OpenClassrooms - Data Analyst</div>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-label">Expérience</div>
+            <div class="sidebar-value">Innovation intern - FM Logistic</div>
+            <div class="sidebar-value">Innovation project manager - CFAI Nancy</div>
+            <div class="sidebar-value">IT Governance Officier - BNP Paribas</div>
+            <div class="sidebar-value">IT and Solution Engineer - BNP Paribas</div>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-label">Outils maîtrisés</div>
+            <div class="sidebar-value">Tableau · Power BI · SQL · Python · Excel · Notion · Jira</div>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-label">Langues</div>
+            <div class="sidebar-value">Français (natif) · Anglais (opérationnel)</div>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-label">Localisation</div>
+            <div class="sidebar-value">Paris, France</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Compétences</h2>
+      </div>
+      <div class="skills-grid fade-up">
+        <div class="skill-card">
+          <div class="skill-icon">🔍</div>
+          <div class="skill-card-title">Veille métier &amp; techno</div>
+          <div class="skill-tags">
+            <span class="tag highlight">Exploration outils</span>
+            <span class="tag">Benchmark</span>
+            <span class="tag">Nouvelles méthodes</span>
+            <span class="tag">Innovation Data</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎯</div>
+          <div class="skill-card-title">Identification des besoins</div>
+          <div class="skill-tags">
+            <span class="tag highlight">Analyse métier</span>
+            <span class="tag">Enjeux stratégiques</span>
+            <span class="tag">Contraintes</span>
+            <span class="tag">KPIs</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📋</div>
+          <div class="skill-card-title">Cahier des charges</div>
+          <div class="skill-tags">
+            <span class="tag highlight">Spécifications fonctionnelles</span>
+            <span class="tag">Formalisation</span>
+            <span class="tag">Cadrage projet</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📊</div>
+          <div class="skill-card-title">Gestion de projet Data</div>
+          <div class="skill-tags">
+            <span class="tag highlight">Planification</span>
+            <span class="tag">Agile / Scrum</span>
+            <span class="tag">Jira · Notion</span>
+            <span class="tag">Roadmap</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🤝</div>
+          <div class="skill-card-title">Accompagnement équipes</div>
+          <div class="skill-tags">
+            <span class="tag highlight">Formation utilisateurs</span>
+            <span class="tag">Prise en main outils</span>
+            <span class="tag">Pédagogie</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">💡</div>
+          <div class="skill-card-title">Posture consultant</div>
+          <div class="skill-tags">
+            <span class="tag highlight">Challenge des besoins</span>
+            <span class="tag">Conseil stratégique</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Vulgarisation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Projets &amp; Livrables</h2>
+      </div>
+      <div class="projects-list fade-up">
+
+        <a class="project-item" href="livrables/guide_creation_graphiques_tableau_software.pdf" target="_blank" rel="noopener noreferrer" title="Ouvrir le guide Tableau (PDF)">
+          <div class="project-num">01</div>
+          <div class="project-info">
+            <div class="project-title">Veille technologique Data</div>
+            <div class="project-desc">Exploration et benchmark d'outils d'analyse data — nouvelles méthodes, IA appliquée à l'aéronautique.</div>
+          </div>
+          <span class="project-badge">Veille</span>
+        </a>
+
+        <a class="project-item" href="livrables/analyse_des_besoins_metiers-aeroworld.pdf" target="_blank" rel="noopener noreferrer" title="Ouvrir l'analyse des besoins (PDF)">
+          <div class="project-num">02</div>
+          <div class="project-info">
+            <div class="project-title">Analyse des besoins — Aéroworld</div>
+            <div class="project-desc">Identification des enjeux data d'une grande entreprise aéronautique, formalisation des objectifs stratégiques.</div>
+          </div>
+          <span class="project-badge red">Analyse</span>
+        </a>
+
+        <a class="project-item" href="livrables/cdcf_portfolio.pptx" target="_blank" rel="noopener noreferrer" title="Ouvrir le cahier des charges (.pptx)">
+          <div class="project-num">03</div>
+          <div class="project-info">
+            <div class="project-title">Cahier des charges fonctionnel</div>
+            <div class="project-desc">Rédaction d'un CDC structuré pour cadrer un projet d'analyse data en contexte industriel.</div>
+          </div>
+          <span class="project-badge">Formalisation</span>
+        </a>
+
+        <div class="project-item">
+          <div class="project-num">04</div>
+          <div class="project-info">
+            <div class="project-title">Plan de projet &amp; outils de pilotage</div>
+            <div class="project-desc">Organisation d'un projet data avec roadmap, jalons et outils collaboratifs.</div>
+          </div>
+          <span class="project-badge green">Projet</span>
+        </div>
+
+        <div class="project-item">
+          <div class="project-num">05</div>
+          <div class="project-info">
+            <div class="project-title">Documentation &amp; procédures</div>
+            <div class="project-desc">Formalisation des procédures de documentation pour assurer une gestion fiable et pérenne.</div>
+          </div>
+          <span class="project-badge">Documentation</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLEAU -->
+  <section id="tableau">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Visualisation Data</h2>
+      </div>
+      <div class="tableau-placeholder fade-up">
+        <div class="tableau-inner">
+          <div class="tableau-icon">📈</div>
+          <h3 class="tableau-title">Dashboard Tableau Public</h3>
+          <p class="tableau-desc">
+            Dashboard interactif intégré depuis Tableau Public.
+          </p>
+          <span class="tableau-embed-note">→ Dashboard en direct</span>
+          <div class="tableauPlaceholder" id="viz1776847365571" style="position: relative;">
+            <noscript>
+              <a href="#">
+                <img alt="Full Story" src="https://public.tableau.com/static/images/QH/QHBJTWX96/1_rss.png" style="border: none;" />
+              </a>
+            </noscript>
+            <object class="tableauViz" style="display: none;">
+              <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+              <param name="embed_code_version" value="3" />
+              <param name="path" value="shared/QHBJTWX96" />
+              <param name="toolbar" value="yes" />
+              <param name="static_image" value="https://public.tableau.com/static/images/QH/QHBJTWX96/1.png" />
+              <param name="animate_transition" value="yes" />
+              <param name="display_static_image" value="yes" />
+              <param name="display_spinner" value="yes" />
+              <param name="display_overlay" value="yes" />
+              <param name="display_count" value="yes" />
+              <param name="language" value="fr-FR" />
+            </object>
+          </div>
+          <script type="text/javascript">
+            var divElement = document.getElementById("viz1776847365571");
+            var vizElement = divElement.getElementsByTagName("object")[0];
+            function resizeTableauViz() {
+              vizElement.style.width = "100%";
+              vizElement.style.height = (divElement.offsetWidth * 0.75) + "px";
+            }
+            resizeTableauViz();
+            window.addEventListener("resize", resizeTableauViz);
+            var scriptElement = document.createElement("script");
+            scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Présentation vidéo</h2>
+      </div>
+      <div class="video-placeholder fade-up">
+        <div class="video-caption">Tutoriel : création de graphiques avec Tableau Software</div>
+        <div class="video-label">Vidéo de formation</div>
+        <div class="video-embed-note">→ Tutoriel YouTube intégré</div>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/Ne19g7flcj4?rel=0"
+            title="Tutoriel Tableau Software"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="video-fallback-link">
+          Si le lecteur ne s'affiche pas, ouvrez la vidéo directement :
+          <a href="https://youtu.be/Ne19g7flcj4" target="_blank" rel="noopener noreferrer">voir sur YouTube</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+      <div class="contact-grid fade-up">
+        <div>
+          <h3 class="contact-headline">Travaillons<br><em>ensemble.</em></h3>
+          <p class="contact-subtext">Disponible pour échanger sur ce portfolio ou sur des opportunités en analyse data &amp; gestion de projet.</p>
+          <div class="contact-links">
+            <a href="mailto:votre@email.com" class="contact-link">
+              <span class="contact-link-icon">✉</span>
+              <span>votre@email.com</span>
+              <span class="contact-link-label">Email</span>
+            </a>
+            <a href="https://linkedin.com/in/votre-profil" target="_blank" class="contact-link">
+              <span class="contact-link-icon">in</span>
+              <span>linkedin.com/in/votre-profil</span>
+              <span class="contact-link-label">LinkedIn</span>
+            </a>
+            <a href="https://github.com/votre-profil" target="_blank" class="contact-link">
+              <span class="contact-link-icon">⌥</span>
+              <span>github.com/votre-profil</span>
+              <span class="contact-link-label">GitHub</span>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form-area">
+          <div class="form-field">
+            <label class="form-label">Nom</label>
+            <input type="text" class="form-input" placeholder="Votre nom">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="votre@email.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Message</label>
+            <textarea class="form-input" placeholder="Votre message…"></textarea>
+          </div>
+          <button class="form-submit">Envoyer →</button>
+          <p style="font-size:0.75rem; color:var(--muted); margin-top:0.75rem;">
+            💡 Pour activer le formulaire, connectez-le à <a href="https://formspree.io" style="color:var(--accent)">Formspree</a> ou <a href="https://www.netlify.com/products/forms/" style="color:var(--accent)">Netlify Forms</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">© 2024 — [Prénom Nom] · Portfolio Réflexif · Chef de Projet Data</div>
+    <div class="footer-right">Data ESN — Aéroworld</div>
+  </footer>
+
+  <script>
+    // Scroll-triggered fade animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          // stagger children if they have fade-up class
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Stagger skills cards
+    document.querySelectorAll('.skill-card').forEach((card, i) => {
+      card.style.transitionDelay = `${i * 0.07}s`;
+      card.classList.add('fade-up');
+      observer.observe(card);
+    });
+
+    // Stagger project items
+    document.querySelectorAll('.project-item').forEach((item, i) => {
+      item.style.transitionDelay = `${i * 0.08}s`;
+      item.classList.add('fade-up');
+      observer.observe(item);
+    });
+
+    // Active nav link highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -295,49 +295,10 @@
 
     /* ── TABLEAU ── */
     #tableau { background: var(--paper); }
-    .tableau-placeholder {
-      border: 2px dashed var(--rule);
-      padding: 5rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .tableau-placeholder::before {
-      content: 'VISUALISATION';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: var(--font-display);
-      font-size: 8rem;
-      font-weight: 900;
-      color: var(--cream);
-      white-space: nowrap;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .tableau-inner { position: relative; z-index: 1; }
-    .tableau-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .tableau-title {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-    .tableau-desc { color: var(--muted); max-width: 500px; margin: 0 auto 1.5rem; }
-    .tableau-embed-note {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      text-transform: uppercase;
-      border: 1px solid var(--accent);
-      display: inline-block;
-      padding: 0.4rem 1rem;
-    }
     .tableauPlaceholder {
       width: 100%;
       max-width: 1000px;
-      margin: 1.5rem auto 0;
+      margin: 0 auto;
     }
     .tableauPlaceholder .tableauViz {
       width: 100%;
@@ -349,52 +310,6 @@
     #video .section-title { color: var(--paper); }
     #video .section-number { color: var(--accent); }
     #video .section-header { border-color: #3a3530; }
-    .video-placeholder {
-      background: #111;
-      border: 1px solid #3a3530;
-      aspect-ratio: 16/9;
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 1.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .video-play {
-      width: 72px; height: 72px;
-      border: 2px solid var(--paper);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--paper);
-      font-size: 1.5rem;
-      padding-left: 4px;
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .video-play:hover { border-color: var(--accent); background: var(--accent); }
-    .video-label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #7a7060;
-    }
-    .video-caption {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-style: italic;
-      color: #c8bfa8;
-    }
-    .video-embed-note {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      text-transform: uppercase;
-      border: 1px solid #3a3530;
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-    }
     .video-embed {
       width: min(100%, 800px);
       aspect-ratio: 16/9;
@@ -518,8 +433,6 @@
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .project-item { grid-template-columns: 60px 1fr; }
       .project-badge { display: none; }
-      .tableau-placeholder { padding: 3rem 1.25rem; }
-      .tableau-placeholder::before { font-size: 4rem; }
       .tableauPlaceholder .tableauViz { min-height: 320px; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
     }
@@ -767,15 +680,7 @@
         <span class="section-number">04</span>
         <h2 class="section-title">Visualisation Data</h2>
       </div>
-      <div class="tableau-placeholder fade-up">
-        <div class="tableau-inner">
-          <div class="tableau-icon">📈</div>
-          <h3 class="tableau-title">Dashboard Tableau Public</h3>
-          <p class="tableau-desc">
-            Dashboard interactif intégré depuis Tableau Public.
-          </p>
-          <span class="tableau-embed-note">→ Dashboard en direct</span>
-          <div class="tableauPlaceholder" id="viz1776847365571" style="position: relative;">
+      <div class="tableauPlaceholder fade-up" id="viz1776847365571" style="position: relative;">
             <noscript>
               <a href="#">
                 <img alt="Full Story" src="https://public.tableau.com/static/images/QH/QHBJTWX96/1_rss.png" style="border: none;" />
@@ -794,8 +699,8 @@
               <param name="display_count" value="yes" />
               <param name="language" value="fr-FR" />
             </object>
-          </div>
-          <script type="text/javascript">
+      </div>
+      <script type="text/javascript">
             var divElement = document.getElementById("viz1776847365571");
             var vizElement = divElement.getElementsByTagName("object")[0];
             function resizeTableauViz() {
@@ -807,9 +712,7 @@
             var scriptElement = document.createElement("script");
             scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
             vizElement.parentNode.insertBefore(scriptElement, vizElement);
-          </script>
-        </div>
-      </div>
+      </script>
     </div>
   </section>
 
@@ -820,23 +723,18 @@
         <span class="section-number">05</span>
         <h2 class="section-title">Présentation vidéo</h2>
       </div>
-      <div class="video-placeholder fade-up">
-        <div class="video-caption">Tutoriel : création de graphiques avec Tableau Software</div>
-        <div class="video-label">Vidéo de formation</div>
-        <div class="video-embed-note">→ Tutoriel YouTube intégré</div>
-        <div class="video-embed">
+      <div class="video-embed fade-up">
           <iframe
             src="https://www.youtube-nocookie.com/embed/Ne19g7flcj4?rel=0"
             title="Tutoriel Tableau Software"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           ></iframe>
-        </div>
-        <p class="video-fallback-link">
+      </div>
+      <p class="video-fallback-link fade-up">
           Si le lecteur ne s'affiche pas, ouvrez la vidéo directement :
           <a href="https://youtu.be/Ne19g7flcj4" target="_blank" rel="noopener noreferrer">voir sur YouTube</a>
-        </p>
-      </div>
+      </p>
     </div>
   </section>
 
